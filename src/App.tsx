@@ -155,7 +155,7 @@ function App() {
           </svg>
         )}
       </header>
-      <main className="flex columns-5 gap-15 px-30 text-zinc-600 dark:text-zinc-400">
+      <main className="flex columns-5 gap-15 px-29 text-zinc-600 dark:text-zinc-400">
         <SideBar
           totalNumberOfDice={totalNumberOfDice}
           addDice={addDice}
