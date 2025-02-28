@@ -1,8 +1,9 @@
+import { Die } from '../types'
 import './Dice.css'
 
 type DiceProps = {
   id: number
-  die: any
+  die: Die
   rollDice: (id: number) => void
 }
 

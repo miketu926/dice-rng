@@ -6,7 +6,7 @@ type SideBarProps = {
   rollAllDice: () => void
   clearAllDice: () => void
   resetAllDiceValues: () => void
-  updateAllColor: () => void
+  updateAllColor: (degree: string) => void
 }
 
 export default function SideBar({
@@ -101,7 +101,7 @@ export default function SideBar({
         >
           <circle cx="12" cy="12" r="9" />
         </svg>
-        <svg onClick={() => updateAllColor()} viewBox="0 0 24 24" className="size-7 cursor-pointer rounded-2xl">
+        <svg onClick={() => updateAllColor('')} viewBox="0 0 24 24" className="size-7 cursor-pointer rounded-2xl">
           <defs>
             <clipPath id="circleClip">
               <circle cx="12" cy="12" r="9" />

@@ -2,10 +2,12 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'reac
 import './App.css'
 import Dice from './components/Dice'
 import SideBar from './components/SideBar'
+import { Die } from './types'
 
 function App() {
   // THEME
   const [isDarkMode, setIsDarkMode] = useState(localStorage.theme === 'dark' ? true : false)
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode)
 
   useLayoutEffect(() => {
     if (isDarkMode) {
@@ -16,10 +18,6 @@ function App() {
       document.documentElement.classList.remove('dark')
     }
   }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
 
   /*
    * DICE STACK AND MANAGEMENT
@@ -39,12 +37,13 @@ function App() {
    * totalNumberOfDice *
    */
 
-  const initialDie = {
+  const initialDie: Die = {
     id: 0,
     value: 1,
     color: { filter: `hue-rotate(${0}deg) saturate(3)` },
   }
-  const [diceStack, setDiceStack] = useState([initialDie])
+
+  const [diceStack, setDiceStack] = useState<Die[]>([initialDie])
   const addDice = () => setDiceStack([...diceStack, { ...initialDie }])
   const subtractDice = () => setDiceStack(diceStack.length > 1 ? [...diceStack.slice(0, -1)] : diceStack)
 
@@ -88,7 +87,7 @@ function App() {
   const totalNumberOfDice = useMemo(() => diceStack.length, [diceStack])
 
   const updateAllColor = useCallback(
-    (degree = undefined) => {
+    (degree = '') => {
       const newStack = [...diceStack]
       for (let i = 0; i < newStack.length; i++) {
         if (degree) {
@@ -114,7 +113,7 @@ function App() {
 
   // register space bar to roll
   useEffect(() => {
-    const handleKeyPress = (event) => event.key === ' ' && rollAllDice()
+    const handleKeyPress = (event: KeyboardEvent) => event.key === ' ' && rollAllDice()
     window.addEventListener('keyup', handleKeyPress)
     return () => {
       window.removeEventListener('keyup', handleKeyPress)
