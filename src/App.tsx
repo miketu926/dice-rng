@@ -122,7 +122,7 @@ function App() {
 
   return (
     <>
-      <header className="flex flex-row-reverse p-5">
+      <header className="flex flex-row-reverse p-10">
         {isDarkMode ? (
           <svg
             fill="none"
@@ -155,7 +155,7 @@ function App() {
           </svg>
         )}
       </header>
-      <main className="flex columns-5 gap-15 px-29 text-zinc-600 dark:text-zinc-400">
+      <main className="flex h-screen flex-col-reverse justify-evenly gap-5 px-7 text-zinc-600 sm:h-full sm:columns-5 sm:flex-row sm:justify-normal sm:gap-20 sm:px-29 dark:text-zinc-400">
         <SideBar
           totalNumberOfDice={totalNumberOfDice}
           addDice={addDice}
@@ -166,7 +166,14 @@ function App() {
           resetAllDiceValues={resetAllDiceValues}
           updateAllColor={updateAllColor}
         />
-        <article className="center center flex w-4/5 flex-wrap justify-center gap-10">
+        <article
+          className="flex flex-wrap justify-center gap-5 sm:w-4/5 sm:scale-100 sm:gap-10"
+          style={{
+            zoom: window.navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)
+              ? '50%'
+              : 'normal',
+          }}
+        >
           {diceStack.map((die, index) => {
             return <Dice key={index} id={index} die={die} rollDice={rollDice} />
           })}

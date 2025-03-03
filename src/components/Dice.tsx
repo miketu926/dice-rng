@@ -28,14 +28,16 @@ export default function Dice({ id, die, rollDice }: DiceProps) {
   // }, [isLoading])
 
   return (
-    <div onClick={() => rollDice(id)} className="container cursor-pointer">
-      <div className={`cube show${die.value}`}>
-        <div style={die.color} className="top"></div>
-        <div style={die.color} className="front"></div>
-        <div style={die.color} className="left"></div>
-        <div style={die.color} className="back"></div>
-        <div style={die.color} className="right"></div>
-        <div style={die.color} className="bottom"></div>
+    <div className="flex">
+      <div onClick={() => rollDice(id)} className="container cursor-pointer">
+        <div className={`cube show${die.value}`}>
+          <div style={die.color} className="top"></div>
+          <div style={die.color} className="front"></div>
+          <div style={die.color} className="left"></div>
+          <div style={die.color} className="back"></div>
+          <div style={die.color} className="right"></div>
+          <div style={die.color} className="bottom"></div>
+        </div>
       </div>
     </div>
   )
