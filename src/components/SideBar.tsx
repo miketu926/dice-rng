@@ -20,7 +20,7 @@ export default function SideBar({
   updateAllColor,
 }: SideBarProps) {
   return (
-    <article className="mx-5 flex flex-col rounded-xl border-2 bg-zinc-300 p-5 select-none sm:sticky sm:top-15 sm:mx-0 sm:h-full sm:w-1/5 sm:max-w-60 sm:min-w-50 sm:px-5 sm:py-3 dark:bg-zinc-800">
+    <>
       {/* dice count */}
       <div className="mt-3 mb-2 flex justify-between text-xl">
         <div className="w-1/2">
@@ -54,7 +54,8 @@ export default function SideBar({
       </div>
       <div className="flex w-14/15 justify-between self-center">
         <div>average</div>
-        <div>{Math.floor(totalDiceValues / totalNumberOfDice)}</div>
+        {/* <div>{Math.floor(totalDiceValues / totalNumberOfDice)}</div> */}
+        <div>{(totalDiceValues / totalNumberOfDice).toFixed(2)}</div>
       </div>
       {/* methods */}
       <div
@@ -114,6 +115,6 @@ export default function SideBar({
           </g>
         </svg>
       </div>
-    </article>
+    </>
   )
 }

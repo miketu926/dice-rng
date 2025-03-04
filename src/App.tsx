@@ -122,7 +122,7 @@ function App() {
 
   return (
     <>
-      <header className="flex flex-row-reverse p-10">
+      <header className="flex flex-row-reverse p-10 select-none">
         {isDarkMode ? (
           <svg
             fill="none"
@@ -155,19 +155,21 @@ function App() {
           </svg>
         )}
       </header>
-      <main className="flex h-screen flex-col-reverse justify-evenly gap-5 px-7 text-zinc-600 sm:h-full sm:columns-5 sm:flex-row sm:justify-normal sm:gap-20 sm:px-29 dark:text-zinc-400">
-        <SideBar
-          totalNumberOfDice={totalNumberOfDice}
-          addDice={addDice}
-          subtractDice={subtractDice}
-          totalDiceValues={totalDiceValues}
-          rollAllDice={rollAllDice}
-          clearAllDice={clearAllDice}
-          resetAllDiceValues={resetAllDiceValues}
-          updateAllColor={updateAllColor}
-        />
+      <main className="min-h-screen-safe flex flex-col-reverse justify-evenly gap-5 px-7 text-zinc-600 select-none sm:h-full sm:columns-5 sm:flex-row sm:justify-normal sm:gap-20 sm:px-29 dark:text-zinc-400">
+        <article className="mx-10 mb-5 flex flex-col rounded-xl border-none bg-zinc-300 p-5 select-none sm:sticky sm:top-15 sm:bottom-auto sm:mx-0 sm:h-full sm:w-1/5 sm:max-w-60 sm:min-w-50 sm:border-2 sm:px-5 sm:py-3 dark:bg-zinc-800">
+          <SideBar
+            totalNumberOfDice={totalNumberOfDice}
+            addDice={addDice}
+            subtractDice={subtractDice}
+            totalDiceValues={totalDiceValues}
+            rollAllDice={rollAllDice}
+            clearAllDice={clearAllDice}
+            resetAllDiceValues={resetAllDiceValues}
+            updateAllColor={updateAllColor}
+          />
+        </article>
         <article
-          className="flex flex-wrap justify-center gap-5 sm:w-4/5 sm:scale-100 sm:gap-10"
+          className="flex flex-wrap justify-center gap-5 select-none sm:w-4/5 sm:scale-100 sm:gap-10"
           style={{
             zoom: window.navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i)
               ? '50%'
